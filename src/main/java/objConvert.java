@@ -1,21 +1,20 @@
 import java.text.DecimalFormat;
 
-public class objConvert
-{
+public class objConvert {
 
     //The String arrays store all the supported conversions. If you add/remove items in the array make sure you
     //change the double arrays with the conversions, as the programme uses the String array indexes to corrospond
     //with the double array indexes.
-    private final String[] strDistanceMenu = {"Millimetre","Centimetre","Metre","Kilometre","Inch","Foot","Yard","Mile"};
-    private final String[] strWeightMenu = {"Milligram","Gram","Kilogram","Ounce","Pound","Stone"};
-    private final String[] strVolumeMenu = {"Millilitre","Centilitre","Litre","Fluid Ounce","Pint","Gallon"};
-    private final String[] strTemperatureMenu = {"Centigrade","Fahrenheit"};
+    private final String[] strDistanceMenu = {"Millimetre", "Centimetre", "Metre", "Kilometre", "Inch", "Foot", "Yard", "Mile"};
+    private final String[] strWeightMenu = {"Milligram", "Gram", "Kilogram", "Ounce", "Pound", "Stone"};
+    private final String[] strVolumeMenu = {"Millilitre", "Centilitre", "Litre", "Fluid Ounce", "Pint", "Gallon"};
+    private final String[] strTemperatureMenu = {"Centigrade", "Fahrenheit"};
 
     //These string arrays store the symbols to be used with the answers. Keep them in the same order as the menu String arrays
-    private final String[] strDistanceSymbol = {"mm","cm","m","km","in","ft","yd","m"};
-    private final String[] strWeightSymbol = {"mg","g","kg","oz","lb","st"};
-    private final String[] strVolumeSymbol = {"ml","cl","l","Foz","p","g"};
-    private final String[] strTemperatureSymbol = {"*C","*F"};
+    private final String[] strDistanceSymbol = {"mm", "cm", "m", "km", "in", "ft", "yd", "m"};
+    private final String[] strWeightSymbol = {"mg", "g", "kg", "oz", "lb", "st"};
+    private final String[] strVolumeSymbol = {"ml", "cl", "l", "Foz", "p", "g"};
+    private final String[] strTemperatureSymbol = {"*C", "*F"};
 
     //Conversion tables, make sure you keep them in the same order as the labels in the String arrays
     //They are named as <type><unit> e.g. distanceMM means you are converting FROM Millimetres into....
@@ -51,71 +50,56 @@ public class objConvert
 
     private final DecimalFormat decFormat = new DecimalFormat("#,###.##");
 
-    public objConvert()
-    {
+    public objConvert() {
     }
 
-    public String convertDistance(int sourceIndex, int desIndex, double unit)
-    {
+    public String convertDistance(int sourceIndex, int desIndex, double unit) {
         //Sends the cell reference of the 2D array to the convert method (same for distance, weight and volume)
         //Adds the symbol to the end of the answer
         return "" + convert(distanceTable[sourceIndex][desIndex], unit) + strDistanceSymbol[desIndex];
     }
 
-    public String convertWeight(int sourceIndex, int desIndex, double unit)
-    {
+    public String convertWeight(int sourceIndex, int desIndex, double unit) {
         return "" + convert(weightTable[sourceIndex][desIndex], unit) + strWeightSymbol[desIndex];
     }
 
-    public String convertVolume(int sourceIndex, int desIndex, double unit)
-    {
+    public String convertVolume(int sourceIndex, int desIndex, double unit) {
         return "" + convert(volumeTable[sourceIndex][desIndex], unit) + strVolumeSymbol[desIndex];
     }
 
-    public String convertTemperature(int sourceIndex, int desIndex, double unit)
-    {
+    public String convertTemperature(int sourceIndex, int desIndex, double unit) {
 
         double answer = 0.0;
 
-        if (sourceIndex == desIndex)
-        {
+        if (sourceIndex == desIndex) {
             answer = unit;
-        }
-        else if (sourceIndex == 0)
-        {
-            answer = unit * 9/5 + 32;
-        }
-        else
-        {
-            answer = (unit - 32) * 5/9;
+        } else if (sourceIndex == 0) {
+            answer = unit * 9 / 5 + 32;
+        } else {
+            answer = (unit - 32) * 5 / 9;
         }
 
         return "Answer: " + decFormat.format(answer) + strTemperatureSymbol[desIndex];
 
     }
 
-    private String convert(double conversionRate, double unit)
-    {
+    private String convert(double conversionRate, double unit) {
         return "Answer: " + decFormat.format(conversionRate * unit);
     }
 
-    public String[] getDistanceMenu()
-    {
+    public String[] getDistanceMenu() {
         return strDistanceMenu;
     }
 
-    public String[] getWeightMenu()
-    {
+    public String[] getWeightMenu() {
         return strWeightMenu;
     }
 
-    public String[] getVolumeMenu()
-    {
+    public String[] getVolumeMenu() {
         return strVolumeMenu;
     }
 
-    public String[] getTemperatureMenu()
-    {
+    public String[] getTemperatureMenu() {
         return strTemperatureMenu;
     }
 

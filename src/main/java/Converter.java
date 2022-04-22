@@ -27,7 +27,7 @@ public class Converter extends JPanel implements ActionListener, KeyListener {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
 
-        JFrame frame = new JFrame("Metric Imperial Converter"); //Title
+        JFrame frame = new JFrame("World's Bluest Converter"); //Title
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JComponent paneMain = new Converter();
